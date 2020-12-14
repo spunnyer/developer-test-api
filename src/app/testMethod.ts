@@ -1,3 +1,5 @@
-export default async (): Promise<void> => {
-  throw new Error('Test Message Error');
+import { Request, Response } from 'express';
+
+export default async (req: Request, res: Response): Promise<void> => {
+  res.json({ message: 'Welcome to the Developer Test' }).end();
 };

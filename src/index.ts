@@ -1,22 +1,6 @@
-import express, { Application } from 'express';
-
-import Routes from './routes';
-import errorHandling from './shared/errorHandling';
-import middleware from './shared/middleware';
+import app from './server';
 
 const port = process.env.PORT || 8080;
-
-// Create an Express instance
-const app: Application = express();
-
-// Add any middleware
-middleware(app);
-
-// Set up appropriate routes
-Routes(app);
-
-// Add any error handling
-errorHandling(app);
 
 // Listen on the appropriate port
 app.listen(port, () => {
