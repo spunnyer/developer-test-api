@@ -30,6 +30,10 @@ The test simulates a reasonable 'real world' requirement to...
 
 This repository has been generated from a template that we use regularly within the company to generate APIs in a microservice environment. As such it is built to allow rapid and lightweight launching of these microservices with Express.JS servers and basic middleware included and ready to go.
 
+## Is everything I need included?
+
+This is a very 'bare bones' repository, as such we have not included any extra libraries you may want to work with for requests or anything else you may feel approproate. This will be up to you to source and choose appropriately.
+
 # Lets get down to business...
 
 ## Remote API
@@ -135,3 +139,67 @@ In response you will get back will be an array of creditors with the following s
   }
 ]
 ```
+
+# What do we want to see?
+
+The long and the short of it is... When we send a request to a route on your new microservice (`[POST] /credit-search`) with a person's name and their address, we expect to get back a summary of ...
+
+- The total value of all creditors
+- The total value of secured creditors
+- The total value of unsecured creditors
+- If the person qualifies for help.
+
+## Can I have an example?
+
+Sure...
+
+If we `POST` the following body to `/credit-search`...
+
+```json
+{
+  "surname": "Elliott",
+  "address": "1 Newhouse Lane",
+  "postcode": "NH1 7EQ"
+}
+```
+
+We would expect your new API to return....
+
+```json
+{
+  "totalCreditorValue": 12149717,
+  "securedCreditorValue": 11786427,
+  "unsecuredCreditorValue": 363290,
+  "qualifies": false
+}
+```
+
+## What are the rules?
+
+Ok. So..
+
+- `totalCreditorValue` should be a sum of all the values returned by calling the creditors route.
+- `securedCreditorValue` should be a sum of all the values returned by calling the creditors route where `secured` is `true`
+- `unsecuredCreditorValue` should be a sum of all the values returned by calling the creditors route where `secured` is `false`
+- `qualifies` should be `true` or `false` depending on the following criteria
+
+A person qualifies if...
+
+- They have 2 or more `unsecured` creditors with a sum of `£5,000` or more.
+- `Secured` credit does not affect the qualification and should be ignored for the qualification check
+
+# Where do I go from here?
+
+- [ ] Fork this repository
+- [ ] Set up the express route for `/credit-search`
+- [ ] Create the logic to connect to the API
+- [ ] From the responses you get, return the appropriate summary
+- [ ] Send us an email letting us know you have completed the test, and the link to your own fork
+
+## How will I know I have the correct results?
+
+Don't worry, we have set up tests to show you when you have everything right. To check your current work, simply type `npm test` and check the output from that.
+
+## If I need to ask questions?
+
+You're more than welcome to ask any questions you need. Simply send us an e-mail and we will get back to you as soon as we can. You can contact us at `developer-support@debtpanel.co.uk`.
