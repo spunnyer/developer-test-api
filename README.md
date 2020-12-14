@@ -47,6 +47,40 @@ We have a remote API running for you to connect to (the address of which is abov
 
 ## Searching for addresses
 
+Searching for addresses requires a number of fields to search correctly, however all fields are optional. To do a search you should provide `address1`, `address2` and `postcode` as a JSON object in the body of the request.
+
+```curl
+curl --location --request POST 'https://developer-test-service-2vfxwolfiq-nw.a.run.app/addresses' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "address1": "1 Newhouse Lane",
+    "address2": "",
+    "postcode": "NH1 7EQ"
+}'
+```
+
+In response you will get back will be an array of addresses with the following structure..
+
+| Key        | Type   | Description                                                       |
+| ---------- | ------ | ----------------------------------------------------------------- |
+| `id`       | string | The unique ID of this address (required for the creditors search) |
+| `address1` | string | Confirmation of address line 1                                    |
+| `address2` | string | Confirmation of address line 2                                    |
+| `postcode` | string | Confirmation of the postcode                                      |
+
+### Example JSON response
+
+```json
+[
+  {
+    "id": "7ff1ef2c-3063-588f-a977-0ce52b27f32b",
+    "address1": "1 Newhouse Lane",
+    "address2": "",
+    "postcode": "NH1 7EQ"
+  }
+]
+```
+
 ## Searching for Creditors
 
 Searching for creditors is easy and only requires a `surname` and `addressId` to be provided in a JSON object in the body of the request.
@@ -62,7 +96,7 @@ curl --location --request POST 'https://developer-test-service-2vfxwolfiq-nw.a.r
 
 In response you will get back will be an array of creditors with the following structure..
 
-| Key         | Type    | Value                                                                                                                                                               |
+| Key         | Type    | Description                                                                                                                                                         |
 | ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`        | string  | The ID of the creditor for this person                                                                                                                              |
 | `surname`   | string  | The surname of the person                                                                                                                                           |
@@ -70,3 +104,34 @@ In response you will get back will be an array of creditors with the following s
 | `name`      | string  | The name of the creditor                                                                                                                                            |
 | `value`     | integer | The pence value that is owed to this creditor **Please Note:** This value is in pence, so to get the Pound value you will need to divide by 100. E.G. 5499 = £54.99 |
 | `secured`   | boolean | If the credit is secured on a property or other item                                                                                                                |
+
+### Example JSON response
+
+```json
+[
+  {
+    "id": "78d9db05-59f1-5211-9499-4ad00716af04",
+    "surname": "Elliott",
+    "addressId": "93acd9d6-2051-53e3-9637-52d6a61fa23c",
+    "name": "New Egg Ltd",
+    "value": 17599,
+    "secured": false
+  },
+  {
+    "id": "65d7b826-ed62-5d4b-a36a-d617be2bc8d3",
+    "surname": "Elliott",
+    "addressId": "93acd9d6-2051-53e3-9637-52d6a61fa23c",
+    "name": "Yorkshire Bank Mortgages",
+    "value": 11786427,
+    "secured": true
+  },
+  {
+    "id": "2018b38f-c48f-5ce3-a3ff-fe86cd74266b",
+    "surname": "Elliott",
+    "addressId": "93acd9d6-2051-53e3-9637-52d6a61fa23c",
+    "name": "Camper Van Builds Ltd",
+    "value": 345691,
+    "secured": false
+  }
+]
+```
