@@ -194,7 +194,7 @@ A person qualifies if...
 - [ ] Set up the express route for `/credit-search`
 - [ ] Create the logic to connect to the API
 - [ ] From the responses you get, return the appropriate summary
-- [ ] Send us an email at `dev.support@debtpanel.co.uk` letting us know you have completed the test, and the link to your own fork
+- [ ] Send us an email at `developer.support@debtpanel.co.uk` letting us know you have completed the test, and the link to your own fork
 
 ## How will I know I have the correct results?
 
@@ -202,4 +202,4 @@ Don't worry, we have set up tests to show you when you have everything right. To
 
 ## If I need to ask questions?
 
-You're more than welcome to ask any questions you need. Simply send us an e-mail and we will get back to you as soon as we can. You can contact us at `dev.support@debtpanel.co.uk`.
+You're more than welcome to ask any questions you need. Simply send us an e-mail and we will get back to you as soon as we can. You can contact us at `developer.support@debtpanel.co.uk`.
