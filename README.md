@@ -5,7 +5,7 @@
 Welcome to the DebtPanel Developer Test repository. The aim of this test is to assess skills of incoming
 developers by using a quick (but close to real world) rapid development test.
 
-We estimate that this test should take no longer than an hour to complete and by having test built into
+We estimate that this test should take no longer than an hour to complete and by having tests built into
 this repositiory developers can be sure they have correct results before submitting a completed article.
 
 ## Requirements
@@ -32,7 +32,7 @@ This repository has been generated from a template that we use regularly within 
 
 ## Is everything I need included?
 
-This is a very 'bare bones' repository, as such we have not included any extra libraries you may want to work with for requests or anything else you may feel approproate. This will be up to you to source and choose appropriately.
+This is a very 'bare bones' repository, as such we have not included any extra libraries you may want to work with for requests or anything else you may feel approproate. This will be up to you to source and choose appropriately. However, Express.JS and all appropriate testing libraries come already set up and ready to go.
 
 # Lets get down to business...
 
@@ -83,6 +83,18 @@ In response you will get back will be an array of addresses with the following s
     "postcode": "NH1 7EQ"
   }
 ]
+```
+
+### Important Information
+
+If a person lives in a Flat then the flat information must be in `address1` and the street information should be in `address2` for example...
+
+```json
+{
+  "address1": "Flat 2",
+  "address2": "65 Newhouse Lane",
+  "postcode": "NH1 7EQ"
+}
 ```
 
 ## Searching for Creditors
@@ -191,6 +203,7 @@ A person qualifies if...
 # Where do I go from here?
 
 - [ ] Fork this repository
+- [ ] Install the node modules (`npm install`)
 - [ ] Set up the express route for `/credit-search`
 - [ ] Create the logic to connect to the API
 - [ ] From the responses you get, return the appropriate summary
@@ -198,7 +211,7 @@ A person qualifies if...
 
 ## How will I know I have the correct results?
 
-Don't worry, we have set up tests to show you when you have everything right. To check your current work, simply type `npm test` and check the output from that.
+Don't worry, we have set up tests to show you when you have everything right. To check your current work, simply type `npm test` and check the output from that. In fact, we also utilise github actions, so when you push your updated codebase to your forked repository Github actions will also automatically Lint and Test your work.
 
 ## If I need to ask questions?
 
